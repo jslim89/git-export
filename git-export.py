@@ -19,6 +19,9 @@ parser.add_option("-o", "--output", dest="destination", default=".", help="Outpu
 
 def cp(src, dst):
     assert not os.path.isabs(src)
+    if not os.path.exists(r'' + src):
+        print "File '%s' not exists, skip..." % src
+        return
     dstdir = os.path.join(dst, os.path.dirname(src))
     if not os.path.exists(dstdir):
         os.makedirs(dstdir)
